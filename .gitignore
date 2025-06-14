@@ -39,5 +39,5 @@ assets/cache/
 *.bak
 *.tmp
 
-# === CLion specific ===
-cmake-build-*/
+# === Clangd ===
+.clangd
