@@ -1,0 +1,43 @@
+# === Build artifacts ===
+build/
+CMakeFiles/
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+compile_commands.json
+
+# === IDEs ===
+.vscode/
+.idea/
+*.code-workspace
+
+# === OS/Editor trash ===
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# === Compiled binaries ===
+*.o
+*.obj
+*.so
+*.a
+*.lib
+*.dll
+*.exe
+*.out
+
+# === Logs ===
+*.log
+
+# === Assets generated at runtime ===
+assets/temp/
+assets/cache/
+
+# === Backup files ===
+*.bak
+*.tmp
+
+# === CLion specific ===
+cmake-build-*/
