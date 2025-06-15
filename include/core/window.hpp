@@ -1,4 +1,7 @@
 #pragma once
+#include <glad/glad.h>
+
+#include <GLFW/glfw3.h>
 #include <string>
 
 class Window {
@@ -9,7 +12,8 @@ public:
   void swapBuffers();
   void pollEvents();
   bool shouldClose() const;
+  GLFWwindow *getNativeHandle() const;
 
 private:
-  void *m_window;
+  GLFWwindow *m_window;
 };
