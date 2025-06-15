@@ -9,5 +9,5 @@ public:
   void bind(unsigned int unit = 0) const;
 
 private:
-  unsigned int m_id;
+  unsigned int m_ID;
 };
