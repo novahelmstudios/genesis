@@ -1,15 +1,23 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.14)
 project(genesis)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 
-# Set src and include
+# Include directories
 include_directories(include)
-file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*.cpp)
+include_directories(glad/include)
 
-# External libraries
-add_subdirectory(external/glfw)
-add_subdirectory(external/glm)
+# Source files
+file(GLOB_RECURSE SRC src/*.cpp)
+set(GLAD_SRC include/glad/src/glad.c)
 
-add_executable(MyOpenGLGame ${SOURCES})
-target_link_libraries(MyOpenGLGame glfw glm)
+# Create executable
+add_executable(genesis ${SRC} ${GLAD_SRC})
+
+# Link libraries
+find_package(OpenGL REQUIRED)
+find_package(PkgConfig REQUIRED)
+pkg_search_module(GLFW REQUIRED glfw3)
+
+target_include_directories(genesis PRIVATE ${GLFW_INCLUDE_DIRS})
+target_link_libraries(genesis PRIVATE ${GLFW_LIBRARIES} OpenGL::GL dl)

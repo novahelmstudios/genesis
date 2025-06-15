@@ -10,5 +10,5 @@ public:
   void draw() const;
 
 private:
-  unsigned int m_vao, m_vbo, m_ebo;
+  unsigned int m_vao, m_vbo, m_ebo, m_indexCount;
 };
