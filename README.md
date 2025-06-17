@@ -1,5 +1,7 @@
 # Genesis
 
+## TODO
+
 ### Core Engine
 
 - [ ] Application Manager <br>
@@ -8,7 +10,7 @@
 - [ ] Scene Manager <br>
 - [ ] Timer <br>
 - [ ] Entity Component System [AZTR3K](github.com/AZTR3K) <br>
-- [ ] Input Manager [Mujtabah](github.com/mmujtabah) <br>
+- [ ] Input Manager [Mujtaba](github.com/mmujtabah) <br>
 - [ ] UI Manager [Ahsan](github.com/itzahsannn)<br>
 - [ ] Collision System [Husnain](github.com/husnain56)<br>
 - [ ] Render pipeline <br>
