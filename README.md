@@ -8,7 +8,7 @@ Core Engine
 - Timer
 - Save Data
 - Entity Component System
-- Input Manager
+- [x] Input Manager (Mujtaba)
 - UI Manager
 - Collision System
 - Render pipeline
