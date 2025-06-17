@@ -7,7 +7,7 @@ Core Engine
 - Scene Manager
 - Timer
 - Save Data
-- Entity Component System
+- [x] Entity Component System (Aztrek)
 - [x] Input Manager (Mujtaba)
 - UI Manager
 - Collision System
