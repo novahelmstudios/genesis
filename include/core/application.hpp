@@ -15,6 +15,6 @@ private:
   void render();
   void shutdown();
 
-  Window* m_Window;
+  Window *m_Window;
   float width, height;
 };

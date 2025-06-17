@@ -13,15 +13,26 @@ Application::Application(float _width, float _height, const char *title)
 Application::~Application() { shutdown(); }
 
 void Application::run() {
+  glEnable(GL_BLEND);
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
   Font font("assets/fonts/Inter.ttf", 48);
   font.setProjection(glm::ortho(0.0f, width, 0.0f, height));
   Shader textShader("assets/shaders/text.vert", "assets/shaders/text.frag");
 
   while (!m_Window->shouldClose()) {
     m_Window->pollEvents();
+
+    // ============ BACKGROUND COLOR ============
+    // Set background color (R, G, B, Alpha) - values from 0.0 to 1.0
+    glClearColor(0.0f, 0.1f, 0.0f, 1.0f);
+
     glClear(GL_COLOR_BUFFER_BIT);
-    font.renderText(textShader, "Hello", 100.0f, 100.0f, 1.0f,
-                    glm::vec3(1, 1, 1));
+
+    // ============ TEXT COLOR ============
+    // Text color is set in the renderText call as glm::vec3(R, G, B)
+    font.renderText(textShader, "Genesis", 400.0f, 400.0f, 1.0f,
+                    glm::vec3(0.5f, 1.0f, 0.0f));
 
     m_Window->swapBuffers();
   }
