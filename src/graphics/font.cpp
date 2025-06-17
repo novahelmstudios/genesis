@@ -98,8 +98,11 @@ void Font::renderText(Shader &shader, const std::string &text, float x, float y,
         {xpos + w, ypos + h, 1.0f, 0.0f}};
 
     glBindTexture(GL_TEXTURE_2D, ch.textureID);
+
     glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
     glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+
     glDrawArrays(GL_TRIANGLES, 0, 6);
 
     x += (ch.advance >> 6) * scale;
