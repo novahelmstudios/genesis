@@ -7,6 +7,8 @@
 #include <map>
 #include <string>
 
+namespace Engine {
+
 class Shader;
 
 struct Character {
@@ -33,3 +35,5 @@ private:
   void loadFont(const std::string &path, unsigned int size);
   void initBuffers();
 };
+
+} // namespace Engine

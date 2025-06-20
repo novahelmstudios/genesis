@@ -1,10 +1,10 @@
 #include "graphics/shader.hpp"
+#include "external/glad/glad.h"
 #include <fstream>
-#include <glad/glad.h>
 #include <iostream>
 #include <sstream>
 
-Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath) {
+Engine::Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath) {
   std::ifstream vfile(vertexPath), ffile(fragmentPath);
   std::stringstream vstream, fstream;
 
@@ -37,39 +37,41 @@ Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath) {
   glDeleteShader(fragment);
 }
 
-Shader::~Shader() { glDeleteProgram(m_ID); }
+Engine::Shader::~Shader() { glDeleteProgram(m_ID); }
 
-void Shader::use() const { glUseProgram(m_ID); }
+void Engine::Shader::use() const { glUseProgram(m_ID); }
 
-void Shader::setUniform(const std::string &name, float value) const {
+void Engine::Shader::setUniform(const std::string &name, float value) const {
   int loc = glGetUniformLocation(m_ID, name.c_str());
   glUniform1f(loc, value);
 }
 
-void Shader::setVec3(const std::string &name, const glm::vec3 &value) const {
+void Engine::Shader::setVec3(const std::string &name, const glm::vec3 &value) const {
   glUniform3f(glGetUniformLocation(m_ID, name.c_str()), value.x, value.y,
               value.z);
 }
 
-void Shader::setMat4(const std::string &name, const glm::mat4 &mat) const {
+void Engine::Shader::setMat4(const std::string &name, const glm::mat4 &mat) const {
   glUniformMatrix4fv(glGetUniformLocation(m_ID, name.c_str()), 1, GL_FALSE,
                      &mat[0][0]);
 }
 
-void Shader::checkCompilerErorrs(unsigned int shader, std::string type) {
-    int success;
-    char infoLog[1024];
-    if (type != "PROGRAM") {
-        glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
-        if (!success) {
-            glGetShaderInfoLog(shader, 1024, NULL, infoLog);
-            std::cerr << "ERROR::SHADER_COMPILATION_ERROR of type: " << type << "\n" << infoLog << std::endl;
-        }
-    } else {
-        glGetProgramiv(shader, GL_LINK_STATUS, &success);
-        if (!success) {
-            glGetProgramInfoLog(shader, 1024, NULL, infoLog);
-            std::cerr << "ERROR::PROGRAM_LINKING_ERROR of type: " << type << "\n" << infoLog << std::endl;
-        }
+void Engine::Shader::checkCompilerErorrs(unsigned int shader, std::string type) {
+  int success;
+  char infoLog[1024];
+  if (type != "PROGRAM") {
+    glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
+    if (!success) {
+      glGetShaderInfoLog(shader, 1024, NULL, infoLog);
+      std::cerr << "ERROR::SHADER_COMPILATION_ERROR of type: " << type << "\n"
+                << infoLog << std::endl;
     }
+  } else {
+    glGetProgramiv(shader, GL_LINK_STATUS, &success);
+    if (!success) {
+      glGetProgramInfoLog(shader, 1024, NULL, infoLog);
+      std::cerr << "ERROR::PROGRAM_LINKING_ERROR of type: " << type << "\n"
+                << infoLog << std::endl;
+    }
+  }
 }

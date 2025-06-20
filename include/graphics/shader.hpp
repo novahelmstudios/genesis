@@ -2,6 +2,8 @@
 #include <string>
 #include <glm/glm.hpp>
 
+namespace Engine{
+
 class Shader {
 public:
   Shader(const std::string &vertexPath, const std::string &fragmentPath);
@@ -16,3 +18,5 @@ private:
   void checkCompilerErorrs(unsigned int shader, std::string type);
   unsigned int m_ID;
 };
+
+}
