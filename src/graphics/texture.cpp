@@ -18,4 +18,3 @@ void Engine::Texture::bind(unsigned int unit) const {
   glActiveTexture(GL_TEXTURE0 + unit);
   glBindTexture(GL_TEXTURE_2D, m_ID);
 }
-

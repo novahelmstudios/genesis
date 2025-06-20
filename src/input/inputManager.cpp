@@ -17,7 +17,7 @@ double Engine::InputManager::mouseY = 0.0;
 void Engine::InputManager::init(GLFWwindow *win) { s_window = win; }
 
 /*
- * Updates the state of the keys being pressed every frame against
+ * Updates the state of the keys being pressedevery frame against
  * the key & mouse array
  * Prev State is copied to the keyPrev & mousePrev array
  */
