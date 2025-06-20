@@ -1,5 +1,5 @@
 #include "graphics/font.hpp"
-#include "external/glad/glad.h"
+#include "glad/glad.h"
 #include "graphics/shader.hpp"
 #include <iostream>
 

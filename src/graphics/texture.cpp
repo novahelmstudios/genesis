@@ -1,5 +1,6 @@
 #include "graphics/texture.hpp"
 #include <GL/gl.h>
+#include <GLFW/glfw3.h>
 
 Engine::Texture::Texture(const std::string &path) {
   glGenTextures(1, &m_ID);
@@ -17,3 +18,4 @@ void Engine::Texture::bind(unsigned int unit) const {
   glActiveTexture(GL_TEXTURE0 + unit);
   glBindTexture(GL_TEXTURE_2D, m_ID);
 }
+
