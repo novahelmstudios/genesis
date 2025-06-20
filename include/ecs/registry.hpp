@@ -8,8 +8,17 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <utility>
+#include <vector>
 
 namespace Engine {
+
+template <typename... Args> struct first_type;
+
+template <typename T, typename... Args> struct first_type<T, Args...> {
+  using type = T;
+};
+
+template <typename... Args> using first_t = typename first_type<Args...>::type;
 
 class registry {
 public:
@@ -48,6 +57,31 @@ public:
   template <typename T> T &Get(Entity e) {
     auto &pool = GetPool<T>();
     return pool.get(e.id);
+  }
+
+  /*
+   * returns a vector that has all the entities
+   * that have the requested components
+   *
+   * for e.g: reg.View<Transform, Animator, Collider>();
+   *
+   * it itterates over all entities with Transform component
+   * and for each checks if it has Animator and Collider
+   * components and return only those
+   */
+  template <typename... T> std::vector<Entity> View() {
+    std::vector<Entity> result;
+
+    auto &pool = GetPool<first_t<T...>>(); // Correct portable version
+
+    for (const auto &[id, _] : pool.components) {
+      Entity e{id};
+
+      if ((Has<T>(e) && ...)) // check Has<T1>(e) && Has<T2>(e) && ...
+        result.push_back(e);
+    }
+
+    return result;
   }
 
   /*
