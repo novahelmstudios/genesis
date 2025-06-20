@@ -2,6 +2,8 @@
 
 #include "window.hpp"
 
+namespace Engine {
+
 class Application {
 public:
   Application(float width, float height, const char *title);
@@ -18,3 +20,5 @@ private:
   Window *m_Window;
   float width, height;
 };
+
+} // namespace Engine

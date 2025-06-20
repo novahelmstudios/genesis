@@ -4,15 +4,15 @@
 #include <glm/ext/matrix_clip_space.hpp>
 #include <iostream>
 
-Application::Application(float _width, float _height, const char *title)
+Engine::Application::Application(float _width, float _height, const char *title)
     : width(_width), height(_height) {
   m_Window = new Window(_width, _height, title);
   init();
 }
 
-Application::~Application() { shutdown(); }
+Engine::Application::~Application() { shutdown(); }
 
-void Application::run() {
+void Engine::Application::run() {
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -38,7 +38,7 @@ void Application::run() {
   }
 }
 
-void Application::init() {
+void Engine::Application::init() {
   if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
     std::cerr << "Failed to initialize GLAD\n";
     std::exit(EXIT_FAILURE);
@@ -47,14 +47,14 @@ void Application::init() {
   std::cout << "Application initialized.\n";
 }
 
-void Application::update() {
+void Engine::Application::update() {
   // handle game logic
 }
 
-void Application::render() {
+void Engine::Application::render() {
   glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT);
   std::cout << "Rendering\n";
 }
 
-void Application::shutdown() { delete m_Window; }
+void Engine::Application::shutdown() { delete m_Window; }
