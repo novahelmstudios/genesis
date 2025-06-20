@@ -1,7 +1,9 @@
 #pragma once
-#include <glad/glad.h>
+#include <external/glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <string>
+
+namespace Engine {
 
 class Window {
 public:
@@ -16,3 +18,5 @@ public:
 private:
   GLFWwindow *m_window;
 };
+
+} // namespace Engine
