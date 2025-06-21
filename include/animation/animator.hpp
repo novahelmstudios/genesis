@@ -1,6 +1,6 @@
 #pragma once
 
-#include "graphics/spriteSheet.hpp"
+#include "spriteSheet.hpp"
 namespace Engine {
 
 struct AnimationClip {
