@@ -4,7 +4,8 @@
 #include <iostream>
 #include <sstream>
 
-Engine::Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath) {
+Engine::Shader::Shader(const std::string &vertexPath,
+                       const std::string &fragmentPath) {
   std::ifstream vfile(vertexPath), ffile(fragmentPath);
   std::stringstream vstream, fstream;
 
@@ -39,24 +40,33 @@ Engine::Shader::Shader(const std::string &vertexPath, const std::string &fragmen
 
 Engine::Shader::~Shader() { glDeleteProgram(m_ID); }
 
-void Engine::Shader::use() const { glUseProgram(m_ID); }
+void Engine::Shader::bind() const { glUseProgram(m_ID); }
 
 void Engine::Shader::setUniform(const std::string &name, float value) const {
   int loc = glGetUniformLocation(m_ID, name.c_str());
   glUniform1f(loc, value);
 }
 
-void Engine::Shader::setVec3(const std::string &name, const glm::vec3 &value) const {
+void Engine::Shader::setVec3(const std::string &name,
+                             const glm::vec3 &value) const {
   glUniform3f(glGetUniformLocation(m_ID, name.c_str()), value.x, value.y,
               value.z);
 }
 
-void Engine::Shader::setMat4(const std::string &name, const glm::mat4 &mat) const {
+void Engine::Shader::setVec4(const std::string &name,
+                             const glm::vec4 &value) const {
+    GLint location = glGetUniformLocation(m_ID, name.c_str());
+    glUniform4fv(location, 1, &value[0]);
+}
+
+void Engine::Shader::setMat4(const std::string &name,
+                             const glm::mat4 &mat) const {
   glUniformMatrix4fv(glGetUniformLocation(m_ID, name.c_str()), 1, GL_FALSE,
                      &mat[0][0]);
 }
 
-void Engine::Shader::checkCompilerErorrs(unsigned int shader, std::string type) {
+void Engine::Shader::checkCompilerErorrs(unsigned int shader,
+                                         std::string type) {
   int success;
   char infoLog[1024];
   if (type != "PROGRAM") {
