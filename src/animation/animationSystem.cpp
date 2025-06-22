@@ -1,6 +1,6 @@
 #include "animation/animationSystem.hpp"
 #include "animation/animator.hpp"
-#include "graphics/spriteSheet.hpp"
+#include "animation/spriteSheet.hpp"
 
 namespace Engine {
 
