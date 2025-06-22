@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 
+namespace Engine {
+
 class Texture {
 public:
   Texture(const std::string &path);
@@ -11,3 +13,5 @@ public:
 private:
   unsigned int m_ID;
 };
+
+} // namespace Engine

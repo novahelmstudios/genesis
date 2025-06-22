@@ -1,21 +1,21 @@
 #include "graphics/font.hpp"
+#include "glad/glad.h"
 #include "graphics/shader.hpp"
-#include <glad/glad.h>
 #include <iostream>
 
-Font::Font(const std::string &fontPath, unsigned int fontSize) {
+Engine::Font::Font(const std::string &fontPath, unsigned int fontSize) {
   loadFont(fontPath, fontSize);
   initBuffers();
 }
 
-Font::~Font() {
+Engine::Font::~Font() {
   glDeleteVertexArrays(1, &m_VAO);
   glDeleteBuffers(1, &m_VBO);
 }
 
-void Font::setProjection(const glm::mat4 &proj) { m_Projection = proj; }
+void Engine::Font::setProjection(const glm::mat4 &proj) { m_Projection = proj; }
 
-void Font::loadFont(const std::string &path, unsigned int size) {
+void Engine::Font::loadFont(const std::string &path, unsigned int size) {
   FT_Library ft;
   if (FT_Init_FreeType(&ft)) {
     std::cerr << "ERROR::FREETYPE: Could not init FreeType Library\n";
@@ -60,7 +60,7 @@ void Font::loadFont(const std::string &path, unsigned int size) {
   FT_Done_FreeType(ft);
 }
 
-void Font::initBuffers() {
+void Engine::Font::initBuffers() {
   glGenVertexArrays(1, &m_VAO);
   glGenBuffers(1, &m_VBO);
   glBindVertexArray(m_VAO);
@@ -72,8 +72,8 @@ void Font::initBuffers() {
   glBindVertexArray(0);
 }
 
-void Font::renderText(Shader &shader, const std::string &text, float x, float y,
-                      float scale, glm::vec3 color) {
+void Engine::Font::renderText(Shader &shader, const std::string &text, float x,
+                              float y, float scale, glm::vec3 color) {
   shader.use();
   shader.setVec3("textColor", color);
   shader.setMat4("projection", m_Projection);
