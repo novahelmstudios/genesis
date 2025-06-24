@@ -6,7 +6,7 @@
 #include "rigidbody.hpp"
 #include "transform.hpp"
 
-namespace Engine{
+namespace Engine {
 
 void PhysicsSystem(Engine::registry &reg, float dt);
 
