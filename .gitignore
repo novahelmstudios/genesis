@@ -45,3 +45,9 @@ assets/cache/
 
 # === bin-out ===
 genesis
+
+# === Visual Studio files
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.users
