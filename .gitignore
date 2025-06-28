@@ -51,3 +51,5 @@ genesis
 *.vcxproj
 *.vcxproj.filters
 *.vcxproj.user
+.vs
+*.vcxproj.user
