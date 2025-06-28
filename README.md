@@ -4,17 +4,17 @@
 
 ### Core Engine
 
-- [ ] Application Manager <br>
-- [ ] Window Manager [Razi](github.com/iamrazii) <br>
+- [x] Application Manager <br>
+- [x] Window Manager [Razi](github.com/iamrazii) <br>
 - [ ] Layer Manager <br>
 - [ ] Scene Manager <br>
 - [ ] Timer <br>
-- [ ] Entity Component System [AZTR3K](github.com/AZTR3K) <br>
-- [ ] Input Manager [Mujtaba](github.com/mmujtabah) <br>
+- [x] Entity Component System [AZTR3K](github.com/AZTR3K) <br>
+- [x] Input Manager [Mujtaba](github.com/mmujtabah) <br>
 - [ ] UI Manager [Ahsan](github.com/itzahsannn)<br>
 - [ ] Collision System [Husnain](github.com/husnain56)<br>
-- [ ] Render pipeline <br>
+- [ ] Render system <br>
     - 2d renderer , sprites , fonts <br>
-- [ ] Animator [Abdullah](github.com/abdulahshoaib) <br>
-- [ ] Resource Manager <br>
+- [x] Animator [Abdullah](github.com/abdulahshoaib) <br>
+- [x] Resource Manager <br>
 - [ ] Level Editor <br>
