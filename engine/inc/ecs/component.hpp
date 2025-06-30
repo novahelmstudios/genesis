@@ -59,8 +59,8 @@ struct Velocity {
  * reg.view<Transform, Sprite, Player>();
  * reg.view<Transform, Camera>();
  */
-struct Player {};
-struct Enemy {};
-struct Camera {};
+struct tPlayer {};
+struct tEnemy {};
+struct tCamera {};
 
 } // namespace Engine
